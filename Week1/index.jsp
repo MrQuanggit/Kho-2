@@ -8,7 +8,7 @@
 <body>
     <h1>Simple Calculator</h1>
     <legend>Calculator</legend>
-    <form action="" method="get">
+    <form action="calculator.php" method="get">
         <label>First operand</label>
         <input type="text" name="firstOperand"></br>
         <label>Operator</label>
@@ -23,4 +23,3 @@
         <button type="submit">Calculator</button>
     </form>
 </body>
-</html>

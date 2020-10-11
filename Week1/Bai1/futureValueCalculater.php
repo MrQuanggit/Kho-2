@@ -35,7 +35,7 @@
         $rate = $_POST["rate"];
         $year = $_POST["year"];
 
-        $present = $money * (($rate + 1) ** $year);
+        $present = $money * (($rate + 1) * $year);
         echo "Tiền sau " . $year . " năm gửi có được là " . $present;
     }
     ?>

@@ -5,163 +5,8 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>DQ Landing Page</title>
+      <link rel="stylesheet" href="./style.css" />
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" />
-      <style>
-            * {
-                  box-sizing: border-box;
-                  font-family: Arial, Helvetica, sans-serif;
-            }
-
-            /* Intro */
-            .intro {
-                  width: 100%;
-                  height: 200px;
-                  background-color: #bdc3c7 ;
-            }
-
-            .intro img {
-                  width: 30%;
-                  float: right;
-                  height: 200px;
-            }
-
-            .intro ul {
-                  width: 70%;
-                  float: left;
-                  font-size: 16px;
-            }
-
-            /* Danh sách sản phẩm */
-            .container {
-                  width: 100%;
-                  display: flex;
-                  flex-wrap: wrap;
-                  background-color: #f1f1f1;
-            }
-
-            .element {
-                  flex: 18%;
-                  margin: 1em;
-                  padding: 1rem;
-                  border: 1px solid black;
-                  font-size: 16px;
-                  text-align: center;
-                  background-color: #ecf0f1;
-            }
-
-            .img {
-                  width: 50%;
-            }
-
-            .view {
-                  float: right;
-            }
-
-            .stock {
-                  float: left;
-            }
-
-            /* Form đăng ký */
-            .customer {
-                  width: 100%;
-                  border: 1px solid black;
-                  height: 400px;
-                  font-size: 16px;
-            }
-
-            .formmuahang table {
-                  border-collapse: collapse;
-                  width: 100%;
-            }
-
-            .formmuahang td,
-            th {
-                  border: solid 1px #ccc;
-            }
-
-            .formdangky {
-                  width: 50%;
-                  float: left;
-            }
-
-            .formdangky input {
-                  width: 40%;
-            }
-
-            .formdangky label {
-                  float: left;
-                  width: 200px;
-            }
-
-            .formmuahang {
-                  width: 50%;
-                  float: right;
-            }
-
-            /* Footer */
-            .footer {
-                  background-color: #34495e;
-                  text-align: center;
-                  padding: 5px 5px;
-                  width: 100%;
-            }
-
-            .footer a {
-                  font-size: 30px;
-                  padding: 5px;
-                  text-align: center;
-            }
-
-            .list {
-                  text-align: center;
-                  width: 100%;
-            }
-
-            /* Reponsive */
-            @media screen and (max-width: 900px) {
-                  .element {
-                        flex: 42%;
-                        max-width: 42%;
-                  }
-            }
-
-            @media screen and (max-width: 760px) {
-                  .element {
-                        flex: 100%;
-                        max-width: 100%;
-                  }
-
-                  .intro ul {
-                        display: none;
-                  }
-
-                  .intro img {
-                        width: 100%;
-                        height: 200px;
-                  }
-            }
-
-            @media screen and (max-width: 1140px) {
-                  .formdangky {
-                        width: 100%;
-                  }
-
-                  .formmuahang {
-                        width: 100%;
-                  }
-
-                  .customer,
-                  .element,
-                  .intro ul {
-                        font-size: 12px;
-                  }
-            }
-            @media screen and (max-width: 400px){
-                  .footer{
-                        display: none;
-                  }
-            }
-      </style>
 </head>
 
 <body>
@@ -170,6 +15,37 @@
       $json = json_decode($jsonData, true);
       ?>
 
+      <!-- Trang từng sản phẩm -->
+      <?php
+      
+      session_start();
+
+      if(isset($_GET['type'])){
+            $_SESSION["id_sanpham"] = $_GET["type"];
+            header('Location: http://localhost:5656/sanpham.php');
+      }
+      ?>
+
+      <!-- Menu -->
+      <div class="topnav" id="myTopnav">
+            <a href="#">Trang chủ</a>
+            <a href="#">Danh sách</a>
+            <a href="#">Liên hệ</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fas fa-bars"></i></a>
+            <a class="search-btn"><i class="fas fa-search"></i></a>
+            <a class="cart"><i class="fas fa-cart-plus"></i></a>
+      </div>
+      <script>
+            function myFunction() {
+                  var x = document.getElementById("myTopnav");
+                  if (x.className === "topnav") {
+                        x.className += " responsive";
+                  } else {
+                        x.className = "topnav";
+                  }
+            }
+      </script>
+      <!-- intro -->
       <div class="list">
             <h1>XIN CHÀO CÁC BẠN ĐẾN VỚI SIÊU THỊ DQ</h1>
       </div>
@@ -181,23 +57,88 @@
                   <li>Giao hàng nhanh chóng trong 2h đồng hồ, đảm bảo uy tín với đội ngũ giao hàng của chính công ty</li>
                   <li>Cơ sở vật chất hiện đại, đạt chuẩn, với kho bãi sạch sẽ và đảm bảo an toàn</li>
                   <p>Liên hệ chúng tôi: 0909.909.xxx - 28 Nguyễn Tri Phương - TP.Huế © 2020 Dang Quang</p>
+                  <span>Hoặc qua các fanpage của siêu thị DQ: </span>
+                  <a><i class="fab fa-facebook-f"></i></a>
+                  <a><i class="fab fa-instagram"></i></a>
+                  <a><i class="fab fa-youtube"></i></a>
+                  <a><i class="fab fa-twitter"></i></a>
+                  <a><i class="fab fa-facebook-messenger"></i></a>
             </ul>
       </div>
-      <center>
-            <h3>DANH SÁCH SẢN PHẨM</h3>
-      </center>
-      <div class="container">
-            <?php foreach ($json as $product) : ?>
+
+      <div class="find">
+            <form action="" method="post">
+                  <input type="text" name="search" class="search-txt" placeholder="Mã sản phẩm ..." />
+                  <input type="submit" class="submit" value="Tìm kiếm">
+      </div>
+      <?php
+      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $search = $_POST["search"];
+            $searchArray = $json;
+            $result = [];
+            foreach($searchArray as $product){
+                  if($product['sku']==$search){
+                        array_push($result, $product);
+                  }
+            }
+      }
+      ?>
+      <div class='findValue'>
+      <?php if (isset($_POST['search'])) : ?>
+            <?php foreach ($result as $product) : ?>
                   <div class="element">
                         <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
                         <img class="img" src="<?= $product['image'] ?>" alt="">
-                        <p class="price">Giá: <?php echo $product['price'] . "<br />" ?></p>
+                        <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
                         <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
-                        <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span>
+                        <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
+                        <p><button>Mua ngay</button></p>
+                  </div>
+            <?php endforeach; ?>
+      <?php endif; ?>
+      </div>
+      <!-- SP nổi bật -->
+      <div class="list">
+            <h3><i>SẢN PHẨM NỔI BẬT</i></h3>
+      </div>
+      <?php
+      $soldSort = $json;
+      usort($soldSort, function ($a, $b) {
+            return $b['sold'] - $a['sold'];
+      });
+      $soldProduct = array_slice($soldSort, 0, 4);
+      ?>
+      <div class="container">
+            <?php foreach ($soldProduct as $product) : ?>
+                  <div class="element">
+                        <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
+                        <a href="index.php?type=<?= $product['id']?>"><img class="img" src="<?= $product['image'] ?>" alt=""></a>
+                        <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
+                        <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
+                        <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
+                        <p><button>Mua ngay</button></p>
                   </div>
             <?php endforeach; ?>
       </div>
 
+      <!-- Full dánh sách -->
+      <div class="list">
+            <h3><i>DANH SÁCH SẢN PHẨM</i></h3>
+      </div>
+      <div class="container">
+            <?php foreach ($json as $product) : ?>
+                  <div class="element">
+                        <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
+                        <a href="index.php?type=<?= $product['id']?>"><img class="img" src="<?= $product['image'] ?>" alt=""></a>
+                        <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
+                        <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
+                        <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
+                        <p><button>Mua ngay</button></p>
+                  </div>
+            <?php endforeach; ?>
+      </div>
+
+      <!-- Đăng ký -->
       <div class="customer">
             <?php
 
@@ -208,12 +149,12 @@
                   return $arr_data;
             }
 
-            function saveDataJSON($filename, $name, $email, $phone, $sku, $stock)
+            function saveDataJSON($filename, $name, $adress, $phone, $sku, $stock)
             {
                   try {
                         $contact = array(
                               'name' => $name,
-                              'email' => $email,
+                              'adress' => $adress,
                               'phone' => $phone,
                               'sku' => $sku,
                               'stock' => $stock
@@ -229,19 +170,19 @@
             }
 
             $nameErr = NULL;
-            $emailErr = NULL;
+            $adressErr = NULL;
             $phoneErr = NULL;
             $skuErr = NULL;
             $stockErr = NULL;
             $name = NULL;
-            $email = NULL;
+            $adress = NULL;
             $phone = NULL;
             $sku = NULL;
             $stock = NULL;
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $name = $_POST["name"];
-                  $email = $_POST["email"];
+                  $adress = $_POST["adress"];
                   $phone = $_POST["phone"];
                   $sku = $_POST["sku"];
                   $stock = $_POST["stock"];
@@ -252,14 +193,9 @@
                         $has_error = true;
                   }
 
-                  if (empty($email)) {
-                        $emailErr = "Email không được để trống!";
+                  if (empty($adress)) {
+                        $adressErr = "Địa chỉ không được để trống!";
                         $has_error = true;
-                  } else {
-                        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                              $emailErr = "Định dạng email sai (xxx@xxx.xxx.xxx)!";
-                              $has_error = true;
-                        }
                   }
 
                   if (empty($phone)) {
@@ -276,9 +212,9 @@
                   }
 
                   if ($has_error === false) {
-                        saveDataJSON("data.json", $name, $email, $phone, $sku, $stock);
+                        saveDataJSON("data.json", $name, $adress, $phone, $sku, $stock);
                         $name = NULL;
-                        $email = NULL;
+                        $adress = NULL;
                         $phone = NULL;
                         $sku = NULL;
                         $stock = NULL;
@@ -293,26 +229,26 @@
                               <legend>Điền thông tin</legend>
                               <label>Họ & Tên: </label>
                               <input type="text" name="name" value="<?php echo $name; ?>">
-                              <span class="error">* <?php echo $nameErr; ?></span>
+                              <span class="error" style="color: red">* <?php echo $nameErr; ?></span>
                               <br><br>
-                              <label>E-mail: </label>
-                              <input type="text" name="email" value="<?php echo $email; ?>">
-                              <span class="error">* <?php echo $emailErr; ?></span>
+                              <label>Địa chỉ: </label>
+                              <input type="text" name="adress" value="<?php echo $adress; ?>">
+                              <span class="error" style="color: red">* <?php echo $adressErr; ?></span>
                               <br><br>
                               <label>Số điện thoại: </label>
                               <input type="text" name="phone" value="<?php echo $phone; ?>">
-                              <span class="error">*<?php echo $phoneErr; ?></span>
+                              <span class="error" style="color: red">*<?php echo $phoneErr; ?></span>
                               <br><br>
                               <label>Mã sản phẩm: </label>
                               <input type="text" name="sku" value="<?php echo $sku; ?>">
-                              <span class="error">*<?php echo $skuErr; ?></span>
+                              <span class="error" style="color: red">*<?php echo $skuErr; ?></span>
                               <br><br>
                               <label>Số lượng: </label>
                               <input type="text" name="stock" value="<?php echo $stock; ?>">
-                              <span class="error">*<?php echo $stockErr; ?></span>
+                              <span class="error" style="color: red">*<?php echo $stockErr; ?></span>
                               <br><br>
-                              <button type="submit" name="submit" value="Đăng ký">Đăng ký</button>
-                              <p><span class="error">* bắt buộc điền.</span></p>
+                              <button type="submit" name="submit" value="Đăng ký" style="cursor: pointer">Đăng ký</button>
+                              <p><span class="error" style="color: red">* bắt buộc điền.</span></p>
                         </fieldset>
                   </form>
             </div>
@@ -324,7 +260,7 @@
                   <table>
                         <tr>
                               <th>Họ & Tên</th>
-                              <th>E-mail</th>
+                              <th>Địa chỉ</th>
                               <th>Số điện thoại</th>
                               <th>Mã sản phẩm</th>
                               <th>Số lượng</th>
@@ -332,7 +268,7 @@
                         <?php foreach ($registrations as $registration) : ?>
                               <tr>
                                     <td><?= $registration['name']; ?></td>
-                                    <td><?= $registration['email']; ?></td>
+                                    <td><?= $registration['adress']; ?></td>
                                     <td><?= $registration['phone']; ?></td>
                                     <td><?= $registration['sku']; ?></td>
                                     <td><?= $registration['stock']; ?></td>
@@ -341,16 +277,6 @@
                   </table>
             </div>
       </div>
-      <div class="footer">
-            <a><i class="fab fa-facebook-f"></i></a>
-            <a><i class="fab fa-instagram"></i></a>
-            <a><i class="fab fa-youtube"></i></a>
-            <a><i class="fab fa-twitter"></i></a>
-            <a><i class="fab fa-facebook-messenger"></i></a>
-            <a><i class="fab fa-pinterest"></i></a>
-            <p>LandingPage © 2020 Dang Quang</p>
-      </div>
-
 </body>
 
 </html>

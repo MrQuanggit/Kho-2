@@ -44,7 +44,7 @@
             <a href="#">Danh sách</a>
             <a href="#">Liên hệ</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fas fa-bars"></i></a>
-            <a class="search-btn"><i class="fas fa-search"></i></a>
+            <a class="search-btn" href="http://localhost:5656/login.php"><i class="fas fa-sign-in-alt"></i></a>
             <a class="cart"><i class="fas fa-cart-plus"></i><span><?= count($json) ?></span></a>
       </div>
       <script>
@@ -84,7 +84,7 @@
                   <input type="submit" class="submit" value="Tìm kiếm">
       </div>
       <?php
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if (isset($_POST['search'])) {
             $search = $_POST["search"];
             $searchArray = $json;
             $result = [];
@@ -191,7 +191,7 @@
             $sku = NULL;
             $stock = NULL;
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['name'])) {
                   $name = $_POST["name"];
                   $adress = $_POST["adress"];
                   $phone = $_POST["phone"];

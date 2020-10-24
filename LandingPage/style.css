@@ -39,7 +39,7 @@
     outline: none;
     margin: auto;
     line-height: 40px;
-    width: 400px;
+    width: 50%;
     background-color: #74b9ff;
 }
 .find .submit{
@@ -64,8 +64,17 @@
     float: right;
     border-radius: 50%;
     cursor: pointer;
+    position: relative;
 }
-
+.topnav span {
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    font-size: 10px;
+    right: 20%;
+    top: 15%;
+    padding: 2px;
+}
 /* Intro */
 .intro {
     width: 100%;
@@ -118,8 +127,10 @@
 }
 
 .element button {
-    border-radius: 5px;
+    border-radius: 10%;
     cursor: pointer;
+    width: 50%;
+    height: 40px;
 }
 
 .element button:hover {
@@ -193,6 +204,11 @@ th {
     width: 100%;
 }
 
+/* .info {
+    width: 100%;
+    background-color: royalblue;
+} */
+
 /* Reponsive */
 @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {display: none;}
@@ -200,6 +216,7 @@ th {
       float: right;
       display: block;
     }
+}
   @media screen and (max-width: 600px) {
     .topnav.responsive {position: relative;}
     .topnav.responsive a.icon {
@@ -256,5 +273,4 @@ th {
     .intro ul {
           font-size: 12px;
     }
-}
 }

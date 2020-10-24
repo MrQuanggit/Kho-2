@@ -10,6 +10,19 @@ session_start();
     <title>DQ Landing Page</title>
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" />
+    <style>
+        .imgProduct{
+            width: 40%;
+            float: left;
+        }
+        .imgProduct img{
+            width: 100%;
+        }
+        .buttonProduct {
+            text-align: center;
+  
+        }
+    </style>
 </head>
 
 <body>
@@ -20,7 +33,7 @@ session_start();
             <a href="#">Liên hệ</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fas fa-bars"></i></a>
             <a class="search-btn"><i class="fas fa-search"></i></a>
-            <a class="cart"><i class="fas fa-cart-plus"></i></a>
+            <a class="cart"><i class="fas fa-cart-plus"></i><span><?= count($json) ?></span></a>
       </div>
       <script>
             function myFunction() {
@@ -46,20 +59,22 @@ session_start();
         }
     }
     ?>
-    <div class="container" style="width: 50%; height:auto; float: left;">
+    <div>
         <?php foreach ($result as $product) : ?>
-            <div class="element">
-                <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
-                <a href="index.php?type=<?= $product['id'] ?>"><img class="img" src="<?= $product['image'] ?>" alt=""></a>
-                <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
-                <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
-                <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
-                <p><button>Mua ngay</button></p>
+            <div class="imgProduct">               
+                <img src="<?= $product['image'] ?>" alt="">
+                <div class="buttonProduct">
+                <button>Mua ngay</button></p>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
-    <div class="product" style="width: 50%; height:auto; float: right; background-color: blue">
+    <div class="product">
             <p>Mô tả</p>
+            <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
+                <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
+                <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
+                <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
     </div>
 </body>
 

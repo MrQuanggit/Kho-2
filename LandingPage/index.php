@@ -17,14 +17,26 @@
 
       <!-- Trang từng sản phẩm -->
       <?php
-      
+
       session_start();
 
-      if(isset($_GET['type'])){
+      if (isset($_GET['type'])) {
             $_SESSION["id_sanpham"] = $_GET["type"];
             header('Location: http://localhost:5656/sanpham.php');
       }
-      ?>
+      // $_SESSION["cart_sanpham"] = [];
+      // if (isset($_GET['cart'])) {
+      //       $cart = $_GET["cart"];
+      //       $productArray = $json;
+      //       foreach ($productArray as $product) {
+      //             if ($product['id'] == $cart) {
+      //                   $_SESSION["cart_sanpham"][] = $product;
+      //             }
+      //       }
+      // }
+      //       echo "<pre>";
+      //       print_r($_SESSION["cart_sanpham"]);
+      // ?>
 
       <!-- Menu -->
       <div class="topnav" id="myTopnav">
@@ -33,7 +45,7 @@
             <a href="#">Liên hệ</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fas fa-bars"></i></a>
             <a class="search-btn"><i class="fas fa-search"></i></a>
-            <a class="cart"><i class="fas fa-cart-plus"></i></a>
+            <a class="cart"><i class="fas fa-cart-plus"></i><span><?= count($json) ?></span></a>
       </div>
       <script>
             function myFunction() {
@@ -76,26 +88,26 @@
             $search = $_POST["search"];
             $searchArray = $json;
             $result = [];
-            foreach($searchArray as $product){
-                  if($product['sku']==$search){
+            foreach ($searchArray as $product) {
+                  if ($product['sku'] == $search) {
                         array_push($result, $product);
                   }
             }
       }
       ?>
       <div class='findValue'>
-      <?php if (isset($_POST['search'])) : ?>
-            <?php foreach ($result as $product) : ?>
-                  <div class="element">
-                        <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
-                        <img class="img" src="<?= $product['image'] ?>" alt="">
-                        <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
-                        <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
-                        <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
-                        <p><button>Mua ngay</button></p>
-                  </div>
-            <?php endforeach; ?>
-      <?php endif; ?>
+            <?php if (isset($_POST['search'])) : ?>
+                  <?php foreach ($result as $product) : ?>
+                        <div class="element">
+                              <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
+                              <img class="img" src="<?= $product['image'] ?>" alt="">
+                              <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
+                              <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
+                              <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
+                              <p><button>Mua ngay</button></p>
+                        </div>
+                  <?php endforeach; ?>
+            <?php endif; ?>
       </div>
       <!-- SP nổi bật -->
       <div class="list">
@@ -112,11 +124,11 @@
             <?php foreach ($soldProduct as $product) : ?>
                   <div class="element">
                         <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
-                        <a href="index.php?type=<?= $product['id']?>"><img class="img" src="<?= $product['image'] ?>" alt=""></a>
+                        <a href="index.php?type=<?= $product['id'] ?>"><img class="img" src="<?= $product['image'] ?>" alt=""></a>
                         <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
                         <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
                         <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
-                        <p><button>Mua ngay</button></p>
+                        <a href="index.php?cart=<?= $product['id'] ?>">Mua ngay</a>
                   </div>
             <?php endforeach; ?>
       </div>
@@ -129,7 +141,7 @@
             <?php foreach ($json as $product) : ?>
                   <div class="element">
                         <p class="sku">Mã sản phẩm: <?php echo $product['sku'] . "<br />" ?></p>
-                        <a href="index.php?type=<?= $product['id']?>"><img class="img" src="<?= $product['image'] ?>" alt=""></a>
+                        <a href="index.php?type=<?= $product['id'] ?>"><img class="img" src="<?= $product['image'] ?>" alt=""></a>
                         <p class="price">Giá: <?php echo $product['price'] . " vnđ" . "<br />" ?></p>
                         <span class="stock">Còn lại: <?php echo $product['stock'] . "<br />" ?></span>
                         <span class="view">Lượt xem: <?php echo $product['view'] . "<br />" ?></span> <br>
@@ -137,7 +149,6 @@
                   </div>
             <?php endforeach; ?>
       </div>
-
       <!-- Đăng ký -->
       <div class="customer">
             <?php
@@ -277,6 +288,9 @@
                   </table>
             </div>
       </div>
+      <!-- <div class="info">
+      <p>123</p>
+      </div> -->
 </body>
 
 </html>

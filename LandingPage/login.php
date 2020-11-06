@@ -11,7 +11,7 @@
         }
         .box{
             background-color: #dfe6e9;
-            width: 350px;
+            width: 25%;
             padding: 50px;
             position: absolute;
             top: 50%;
@@ -28,13 +28,14 @@
             text-align: center;
             border: 2px solid #6c5ce7;
             padding: 13px 10px;
-            width: 250px;
+            width: 70%;
             outline: none;
             border-radius: 24px;
-            transition: 0.5s; 
+            transition: 0.5s;
+            font-size: 16px; 
         }
         .box input[type = "text"]:focus,.box input[type = "password"]:focus{
-            width: 320px;
+            width: 85%;
             border-color: #fdcb6e;
         }
         .box input[type = "submit"]{
@@ -44,13 +45,25 @@
             margin: 20px auto;
             text-align: center;
             border: 2px solid #0984e3;
-            padding: 13px 40px;
+            padding: 13px 10px;
             outline: none;
             border-radius: 24px;
             cursor: pointer;
+            width: 50%;
+            font-size: 16px;
         }
         .box input[type = "submit"]:hover{
             background-color: #fdcb6e;
+        }
+        @media screen and (max-width: 1250px){
+            .box{
+                width: 30%;
+            }
+        }
+        @media screen and (max-width: 650px){
+            .box{
+                width: 40%;
+            }
         }
     </style>
 </head>
@@ -59,7 +72,7 @@
         <h1>Siêu Thị DQ</h1>
         <input type="text" name="" placeholder="Username">
         <input type="password" name="" placeholder="Password">
-        <input type="submit" value="Đăng nhập">
+        <input type="submit" value="Login">
     </form>
 </body> 
 </html>

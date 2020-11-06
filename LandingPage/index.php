@@ -24,19 +24,21 @@
             $_SESSION["id_sanpham"] = $_GET["type"];
             header('Location: http://localhost:5656/sanpham.php');
       }
-      // $_SESSION["cart_sanpham"] = [];
-      // if (isset($_GET['cart'])) {
-      //       $cart = $_GET["cart"];
-      //       $productArray = $json;
-      //       foreach ($productArray as $product) {
-      //             if ($product['id'] == $cart) {
-      //                   $_SESSION["cart_sanpham"][] = $product;
-      //             }
-      //       }
-      // }
-      //       echo "<pre>";
-      //       print_r($_SESSION["cart_sanpham"]);
-      // ?>
+      if (!isset($_SESSION["cart"])) {
+            $_SESSION["cart"] = [];
+        } else {
+            $_SESSION["cart"] = $_SESSION["cart"];
+      }
+      if (isset($_GET["cart"])) {
+            $cartArray = $json;
+            foreach ($cartArray as $product) {
+                  if ($product['id'] == $_GET["cart"]) {
+                        array_push($_SESSION["cart"], $product);
+                  }
+            }
+      }
+
+      ?>
 
       <!-- Menu -->
       <div class="topnav" id="myTopnav">
@@ -45,7 +47,7 @@
             <a href="#">Liên hệ</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fas fa-bars"></i></a>
             <a class="search-btn" href="http://localhost:5656/login.php"><i class="fas fa-sign-in-alt"></i></a>
-            <a class="cart"><i class="fas fa-cart-plus"></i><span><?= count($json) ?></span></a>
+            <a class="cart"><i class="fas fa-cart-plus"></i><span><?= count($_SESSION["cart"]) ?></span></a>
       </div>
       <script>
             function myFunction() {
@@ -188,10 +190,10 @@
             $name = NULL;
             $adress = NULL;
             $phone = NULL;
-            $sku = NULL;
+            $sku = NULL; 
             $stock = NULL;
 
-            if (isset($_POST['name'])) {
+            if (isset($_POST['name']) && isset($_POST['adress']) && isset($_POST['phone']) && isset($_POST['sku']) &&isset($_POST['stock'])) {
                   $name = $_POST["name"];
                   $adress = $_POST["adress"];
                   $phone = $_POST["phone"];

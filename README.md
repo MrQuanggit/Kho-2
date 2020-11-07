@@ -14,4 +14,4 @@ Gồm 3 phần chính:
 3. Trang chủ nơi khách hàng xem sản phẩm:
 - Nơi khách hàng có thể vào xem sản phẩm, xem thông tin của hàng, liên hệ với nhân viên, để lại thông tin, tạo đơn, chọn sản phẩm vào giỏ hàng và thêm, bớt sản phẩm ở đó.
 - Gồm Navbar, Slidebar, top giày bán chạy, top giày mới về, các bài viết liên quan đến giày, footer, giỏ hàng, tìm kiếm, các trang chi tiết sản phẩm ...
-- Có sử dụng HTML, CSS, PHP, JS và Bootstrap4 để viết trang.
+- Có sử dụng HTML, CSS, PHP, JS và Bootstrap4 để viết trang..

@@ -3,7 +3,8 @@ include("C:\Users\ADMIN\Desktop\Kho-2\Week4\Bai17\layout\header.php");
 include('../database/database.php');
 ?>
 <?php
-$query = 'SELECT * FROM library.student';
+$search = $_POST['search'];
+$query = "SELECT * FROM library.student where student_name like '%$search%'";
 $conn = $pdo->query($query);
 ?>
 <h1>Student List</h1>

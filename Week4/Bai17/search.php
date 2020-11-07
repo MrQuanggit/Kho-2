@@ -1,7 +1,9 @@
 <?php
 include("C:\Users\ADMIN\Desktop\Kho-2\Week4\Bai17\layout\header.php");
 include('./database/database.php');
-$query = 'SELECT * FROM library.category;';
+
+$search = $_POST['search'];
+$query = "SELECT * FROM library.category where Category_name or Category_id like '%$search%';";
 $conn = $pdo->query($query);
 ?>
 <h1>Categories List</h1>

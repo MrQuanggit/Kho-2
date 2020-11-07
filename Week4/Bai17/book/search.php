@@ -3,8 +3,9 @@ include("C:\Users\ADMIN\Desktop\Kho-2\Week4\Bai17\layout\header.php");
 include('../database/database.php');
 ?>
 <?php
-$query = 'SELECT book_id,book_name,athor,book.category_id,Category_name 
-FROM book inner join category on book.category_id = category.category_id;';
+$search = $_POST["search"];
+$query = "SELECT * 
+FROM book inner join category on book.category_id = category.category_id where book_name like '%$search%';";
 $conn = $pdo->query($query);
 ?>
 <h1>Book List</h1>

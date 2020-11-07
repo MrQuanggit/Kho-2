@@ -11,14 +11,4 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
-
-
-// while ($row = $conn->fetch(PDO::FETCH_ASSOC)) {
-//     echo $row['book_name'] . '<br>';
-// }
-// $con = mysqli_connect($host, $user, $password, $dbname);
-// $result = mysqli_query($con, "select * from library.category");
-// while($row = mysqli_fetch_array($result)){
-//     echo $row['book_name'].'<br>';
-// }
 ?>

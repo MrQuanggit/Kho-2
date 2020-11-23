@@ -13,7 +13,7 @@
     <a href="../student/indexstudent.php">Reader |</a>
     <a href="">Borrow Books |</a>
     <a href="">Athor |</a>
-    <a href="../index.php">Catelogies |</a>
+    <a href="../index.php">Catelogies </a>
     <form action="search.php" method="post" style="float:right;">
         <input type="text" name="search" id="">
         <button type="submit">Search</button>

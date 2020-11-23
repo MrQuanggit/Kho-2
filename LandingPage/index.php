@@ -33,7 +33,7 @@
             $cartArray = $json;
             foreach ($cartArray as $product) {
                   if ($product['id'] == $_GET["cart"]) {
-                        array_push($_SESSION["cart"], $product);
+                        array_push($_SESSION["cart"], $product);    
                   }
             }
       }
